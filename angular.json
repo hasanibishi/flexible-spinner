@@ -3,5 +3,140 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "flexible-spinner": {
+      "projectType": "library",
+      "root": "projects/flexible-spinner",
+      "sourceRoot": "projects/flexible-spinner/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/flexible-spinner/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/flexible-spinner/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/flexible-spinner/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/flexible-spinner/src/test.ts",
+            "tsConfig": "projects/flexible-spinner/tsconfig.spec.json",
+            "karmaConfig": "projects/flexible-spinner/karma.conf.js"
+          }
+        }
+      }
+    },
+    "flexible-spinner-demo": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/flexible-spinner-demo",
+      "sourceRoot": "projects/flexible-spinner-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/flexible-spinner-demo",
+            "index": "projects/flexible-spinner-demo/src/index.html",
+            "main": "projects/flexible-spinner-demo/src/main.ts",
+            "polyfills": "projects/flexible-spinner-demo/src/polyfills.ts",
+            "tsConfig": "projects/flexible-spinner-demo/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/flexible-spinner-demo/src/favicon.ico",
+              "projects/flexible-spinner-demo/src/assets"
+            ],
+            "styles": [
+              "projects/flexible-spinner-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/flexible-spinner-demo/src/environments/environment.ts",
+                  "with": "projects/flexible-spinner-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "flexible-spinner-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "flexible-spinner-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "flexible-spinner-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/flexible-spinner-demo/src/test.ts",
+            "polyfills": "projects/flexible-spinner-demo/src/polyfills.ts",
+            "tsConfig": "projects/flexible-spinner-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/flexible-spinner-demo/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/flexible-spinner-demo/src/favicon.ico",
+              "projects/flexible-spinner-demo/src/assets"
+            ],
+            "styles": [
+              "projects/flexible-spinner-demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "flexible-spinner"
 }

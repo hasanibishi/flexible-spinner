@@ -6,6 +6,12 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "paths": {
+      "flexible-spinner": [
+        "dist/flexible-spinner/flexible-spinner",
+        "dist/flexible-spinner"
+      ]
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
