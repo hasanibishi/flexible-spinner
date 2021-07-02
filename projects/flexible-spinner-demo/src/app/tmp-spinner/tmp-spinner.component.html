@@ -1,3 +1,7 @@
-<div class="loader"
-     *ngIf="isVisible"
-     [ngStyle]="style"></div>
+<div *ngIf="true">
+     <div class="loader"
+          [ngStyle]="style">
+     </div>
+     <span *ngIf="showText"
+           [ngStyle]="textStyle">{{text}}</span>
+</div>

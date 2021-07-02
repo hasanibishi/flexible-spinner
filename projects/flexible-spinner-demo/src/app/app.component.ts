@@ -11,21 +11,11 @@ export class AppComponent {
 
   constructor(
     private spinnerService: TmpSpinnerService
-  ) { }
+  ) {
+    this.showS1();
+  }
 
   showS1() {
     this.spinnerService.showSpinner(1);
-  }
-
-  hideS1() {
-    this.spinnerService.hideSpinner(1);
-  }
-
-  showS2() {
-    this.spinnerService.showSpinner(2);
-  }
-
-  hideS2() {
-    this.spinnerService.hideSpinner(2);
   }
 }

@@ -11,3 +11,14 @@ interface IStyle {
     top?: string;
     bottom?: string;
 }
+
+interface ITextStyle {
+    display: string,
+    alignItems: string,
+    paddingTop?: string,
+    textAlign: string,
+    height: string,
+    width: string,
+    color: string,
+    fontSize: string
+}
