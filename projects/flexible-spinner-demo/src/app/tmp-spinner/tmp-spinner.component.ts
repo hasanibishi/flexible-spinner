@@ -1,12 +1,26 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FlexibleSpinnerService } from './flexible-spinner.service';
+import { TmpSpinnerService } from './tmp-spinner.service';
+
+interface IStyle {
+  animation: string;
+  height: string;
+  width: string;
+  border: string;
+  borderTop: string;
+  position?: string;
+  margin?: string;
+  left?: string;
+  right?: string;
+  top?: string;
+  bottom?: string;
+}
 
 @Component({
-  selector: 'flexible-spinner',
-  templateUrl: './flexible-spinner.component.html',
-  styleUrls: ['./flexible-spinner.component.scss']
+  selector: 'demo-flexible-spinner',
+  templateUrl: './tmp-spinner.component.html',
+  styleUrls: ['./tmp-spinner.component.scss']
 })
-export class FlexibleSpinnerComponent implements OnChanges {
+export class TmpSpinnerComponent implements OnChanges {
 
   style!: IStyle;
   isVisible: boolean = false;
@@ -20,7 +34,7 @@ export class FlexibleSpinnerComponent implements OnChanges {
   @Input() unFilledColor!: string;
 
   constructor(
-    spinnerService: FlexibleSpinnerService
+    spinnerService: TmpSpinnerService
   ) {
     spinnerService.spinner$.subscribe(resp => {
       if (this.spinnerId === resp.spinnerId)

@@ -1,2 +1,29 @@
-<div class="loader"
-     [style.animation]="'spin 2s linear infinite'"></div>
+<button (click)="showS1()">SHOW 1</button>
+<button (click)="hideS1()">HIDE 1</button>
+<br>
+<button (click)="showS2()">SHOW 2</button>
+<button (click)="hideS2()">HIDE 2</button>
+
+<div style="display: flex;">
+
+    <button>
+        <demo-flexible-spinner [spinnerId]="1"
+                               [centerPosition]="false"
+                               [speed]="4"
+                               [size]="10"
+                               [thickness]="10"
+                               [filledColor]="'red'"
+                               [unFilledColor]="'blue'"></demo-flexible-spinner>
+
+        <span>CLICK</span>
+    </button>
+
+
+    <demo-flexible-spinner [spinnerId]="2"
+                           [centerPosition]="true"
+                           [speed]="2"
+                           [size]="190"
+                           [thickness]="10"
+                           [filledColor]="'green'"
+                           [unFilledColor]="'blue'"></demo-flexible-spinner>
+</div>
