@@ -6,7 +6,9 @@ import { CommonModule } from '@angular/common';
   declarations: [
     FlexibleSpinnerComponent
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule
+  ],
   exports: [
     FlexibleSpinnerComponent
   ]

@@ -1,12 +1,13 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FlexibleSpinnerService } from './flexible-spinner.service';
+import { IStyle, ITextStyle } from './models/style.model'
 
 @Component({
   selector: 'flexible-spinner',
   templateUrl: './flexible-spinner.component.html',
   styleUrls: ['./flexible-spinner.component.scss']
 })
-export class FlexibleSpinnerComponent implements OnChanges {
+export class FlexibleSpinnerComponent implements OnInit, OnChanges {
 
   style!: IStyle;
   textStyle!: ITextStyle;
@@ -24,8 +25,10 @@ export class FlexibleSpinnerComponent implements OnChanges {
   @Input() textColor!: string;
   @Input() textSize!: number;
 
-  constructor(fs: FlexibleSpinnerService) {
-    fs.spinner$.subscribe(resp => {
+  constructor(private fs: FlexibleSpinnerService) { }
+
+  ngOnInit() {
+    this.fs.spinner$.subscribe(resp => {
       if (this.spinnerId === resp.spinnerId)
         this.isVisible = resp.visibility;
     });

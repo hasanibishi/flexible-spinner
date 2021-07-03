@@ -1,4 +1,4 @@
-interface ISpinner {
+export interface ISpinner {
     spinnerId: number;
     visibility: boolean;
 }

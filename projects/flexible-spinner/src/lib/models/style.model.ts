@@ -1,4 +1,4 @@
-interface IStyle {
+export interface IStyle {
     animation: string;
     height: string;
     width: string;
@@ -12,7 +12,7 @@ interface IStyle {
     bottom?: string;
 }
 
-interface ITextStyle {
+export interface ITextStyle {
     display: string,
     alignItems: string,
     paddingTop?: string,
