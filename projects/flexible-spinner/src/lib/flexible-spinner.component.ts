@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { FlexibleSpinnerService } from './flexible-spinner.service';
 import { IStyle, ITextStyle } from './models/style.model'
 
@@ -7,7 +8,7 @@ import { IStyle, ITextStyle } from './models/style.model'
   templateUrl: './flexible-spinner.component.html',
   styleUrls: ['./flexible-spinner.component.scss']
 })
-export class FlexibleSpinnerComponent implements OnInit, OnChanges {
+export class FlexibleSpinnerComponent implements OnInit, OnChanges, OnDestroy {
 
   style!: IStyle;
   textStyle!: ITextStyle;
@@ -25,10 +26,12 @@ export class FlexibleSpinnerComponent implements OnInit, OnChanges {
   @Input() textColor!: string;
   @Input() textSize!: number;
 
+  spinnerSubscription!: Subscription;
+
   constructor(private fs: FlexibleSpinnerService) { }
 
   ngOnInit() {
-    this.fs.spinner$.subscribe(resp => {
+    this.spinnerSubscription = this.fs.spinner$.subscribe(resp => {
       if (this.spinnerId === resp.spinnerId)
         this.isVisible = resp.visibility;
     });
@@ -50,7 +53,7 @@ export class FlexibleSpinnerComponent implements OnInit, OnChanges {
       height: '20px',
       width: `${changes['size']?.currentValue + 20}px`,
       color: `${changes['textColor']?.currentValue}`,
-      fontSize: `${changes['textSize']?.currentValue + 20}px`,
+      fontSize: `${changes['textSize']?.currentValue}px`,
     };
 
     if (changes['centerPosition']?.currentValue) {
@@ -72,5 +75,9 @@ export class FlexibleSpinnerComponent implements OnInit, OnChanges {
         ...center
       };
     }
+  }
+
+  ngOnDestroy() {
+    this.spinnerSubscription.unsubscribe();
   }
 }

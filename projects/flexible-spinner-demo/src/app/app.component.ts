@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FlexibleSpinnerService } from 'projects/flexible-spinner/src/projects';
+import { FlexibleSpinnerService } from 'flexible-spinner';
 
 @Component({
   selector: 'app-root',
