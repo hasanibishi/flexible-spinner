@@ -1,12 +1,121 @@
-<flexible-spinner [spinnerId]="1"
-                  [centerPosition]="true"
-                  [speed]="2"
-                  [size]="50"
-                  [thickness]="20"
-                  [filledWidth]="3"
-                  [filledColor]="'red'"
-                  [unFilledColor]="'#eee'"
-                  [showText]="true"
-                  [text]="'Loading...'"
-                  [textSize]="16"
-                  [textColor]="'red'"></flexible-spinner>
+<div class="content">
+    <div>
+        <mat-checkbox [(ngModel)]="centerPosition">
+            Center Position
+        </mat-checkbox>
+        <br>
+        <mat-form-field>
+            <mat-label>Size</mat-label>
+            <mat-select [(ngModel)]="size">
+                <mat-option *ngFor="let item of [10, 20, 30, 50, 100, 200, 300]"
+                            [value]="item">
+                    {{item + 'px'}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Speed</mat-label>
+            <input matInput
+                   type="text"
+                   [(ngModel)]="speed">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Thickness</mat-label>
+            <mat-select [(ngModel)]="thickness">
+                <mat-option *ngFor="let item of [5, 10, 20, 30, 50, 100, 200, 300]"
+                            [value]="item">
+                    {{item + 'px'}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Filled Width</mat-label>
+            <mat-select [(ngModel)]="filledWidth">
+                <mat-option *ngFor="let item of [1, 2, 3]"
+                            [value]="item">
+                    {{item}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Filled Color</mat-label>
+            <mat-select [(ngModel)]="filledColor">
+                <mat-option *ngFor="let item of ['red', 'black', 'blue', '#888']"
+                            [value]="item">
+                    {{item}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Unfilled Color</mat-label>
+            <mat-select [(ngModel)]="unFilledColor">
+                <mat-option *ngFor="let item of ['grey', 'pink', '#eee']"
+                            [value]="item">
+                    {{item}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-checkbox [(ngModel)]="showText">
+            Show Text
+        </mat-checkbox>
+        <br><br>
+        <mat-form-field>
+            <mat-label>Text</mat-label>
+            <input matInput
+                   type="text"
+                   [(ngModel)]="text">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Text Size</mat-label>
+            <mat-select [(ngModel)]="textSize">
+                <mat-option *ngFor="let item of [10, 16, 24, 32]"
+                            [value]="item">
+                    {{item + 'px'}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Text Color</mat-label>
+            <mat-select [(ngModel)]="textColor">
+                <mat-option *ngFor="let item of ['red', 'black', 'aqua', 'blue', '#888']"
+                            [value]="item">
+                    {{item}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="actions">
+        <button mat-raised-button
+                (click)="showSpinner()"
+                color="primary">Show</button>
+        <br>
+        <br>
+        <button mat-raised-button
+                (click)="hideSpinner()"
+                color="accent">Hide</button>
+    </div>
+
+    <div>
+        <flexible-spinner [spinnerId]="spinnerId"
+                          [centerPosition]="centerPosition"
+                          [speed]="speed"
+                          [size]="size"
+                          [thickness]="thickness"
+                          [filledWidth]="filledWidth"
+                          [filledColor]="filledColor"
+                          [unFilledColor]="unFilledColor"
+                          [showText]="showText"
+                          [text]="text"
+                          [textSize]="textSize"
+                          [textColor]="textColor"></flexible-spinner>
+    </div>
+</div>

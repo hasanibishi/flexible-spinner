@@ -1,0 +1,12 @@
+.content {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 15px;
+    justify-items: center;
+    padding: 30px;
+
+    .actions {
+        margin-top: 100px;
+        text-align: center;
+    }
+}

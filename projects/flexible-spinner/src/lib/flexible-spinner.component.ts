@@ -39,12 +39,12 @@ export class FlexibleSpinnerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const speed = changes['speed']?.currentValue;
     const size = changes['size']?.currentValue;
+    const speed = changes['speed']?.currentValue;
     const thickness = changes['thickness']?.currentValue;
     const filledWidth = changes['filledWidth']?.currentValue;
-    const unFilledColor = changes['unFilledColor']?.currentValue;
     const filledColor = changes['filledColor']?.currentValue;
+    const unFilledColor = changes['unFilledColor']?.currentValue;
     const textColor = changes['textColor']?.currentValue;
     const textSize = changes['textSize']?.currentValue;
     const centerPosition = changes['centerPosition']?.currentValue;
