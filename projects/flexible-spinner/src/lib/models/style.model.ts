@@ -3,7 +3,9 @@ export interface IStyle {
     height: string;
     width: string;
     border: string;
-    borderTop: string;
+    borderTop?: string;
+    borderRight?: string;
+    borderBottom?: string;
     position?: string;
     margin?: string;
     left?: string;
