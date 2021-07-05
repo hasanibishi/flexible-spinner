@@ -35,9 +35,9 @@ export class AppComponent implements OnInit {
     this.spinnerService.hideSpinner(this.spinnerId);
   }
 
-  onUnFilledColorChange() {
+  // THIS METHOD IS USED ONLY FOR THE DEMO APPLICATION
+  redraw() {
     this.hideSpinner();
-
     setTimeout(() => {
       this.showSpinner();
     }, 50);
