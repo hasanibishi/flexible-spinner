@@ -20,7 +20,6 @@ export interface ITextStyle {
     paddingTop?: string,
     textAlign: string,
     height: string,
-    width: string,
     color: string,
     fontSize: string
 }

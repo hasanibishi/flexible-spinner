@@ -38,50 +38,40 @@ export class FlexibleSpinnerComponent implements OnInit, OnChanges, OnDestroy {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    const size = changes['size']?.currentValue;
-    const speed = changes['speed']?.currentValue;
-    const thickness = changes['thickness']?.currentValue;
-    const filledWidth = changes['filledWidth']?.currentValue;
-    const filledColor = changes['filledColor']?.currentValue;
-    const unFilledColor = changes['unFilledColor']?.currentValue;
-    const textColor = changes['textColor']?.currentValue;
-    const textSize = changes['textSize']?.currentValue;
-    const centerPosition = changes['centerPosition']?.currentValue;
-
+  ngOnChanges() {
     this.style = {
-      animation: `spin ${speed}s linear infinite`,
-      height: `${size}px`,
-      width: `${size}px`,
-      border: `${thickness}px solid ${unFilledColor}`
+      animation: `spin ${this.speed}s linear infinite`,
+      height: `${this.size}px`,
+      width: `${this.size}px`,
+      border: `${this.thickness}px solid ${this.unFilledColor}`
     };
 
-    switch (filledWidth) {
+    switch (this.filledWidth) {
       case 1:
         this.style = {
           ...this.style,
-          borderTop: `${thickness}px solid ${filledColor}`
+          borderTop: `${this.thickness}px solid ${this.filledColor}`
         }
         break;
       case 2:
         this.style = {
           ...this.style,
-          borderTop: `${thickness}px solid ${filledColor}`,
-          borderRight: `${thickness}px solid ${filledColor}`,
+          borderTop: `${this.thickness}px solid ${this.filledColor}`,
+          borderRight: `${this.thickness}px solid ${this.filledColor}`,
         }
         break;
       case 3:
         this.style = {
           ...this.style,
-          borderTop: `${thickness}px solid ${filledColor}`,
-          borderRight: `${thickness}px solid ${filledColor}`,
-          borderBottom: `${thickness}px solid ${filledColor}`
+          borderTop: `${this.thickness}px solid ${this.filledColor}`,
+          borderRight: `${this.thickness}px solid ${this.filledColor}`,
+          borderBottom: `${this.thickness}px solid ${this.filledColor}`
         }
         break;
       default:
         this.style = {
           ...this.style,
-          borderTop: `${thickness}px solid ${filledColor}`
+          borderTop: `${this.thickness}px solid ${this.filledColor}`
         }
         break;
     }
@@ -91,12 +81,12 @@ export class FlexibleSpinnerComponent implements OnInit, OnChanges, OnDestroy {
       alignItems: 'center',
       textAlign: 'center',
       height: '20px',
-      width: `${size + 20}px`,
-      color: `${textColor}`,
-      fontSize: `${textSize}px`,
+      paddingTop: `${this.centerPosition ? this.size + (this.thickness * 2) + 30 : 5}px`,
+      color: `${this.textColor}`,
+      fontSize: `${this.textSize}px`,
     };
 
-    if (centerPosition) {
+    if (this.centerPosition) {
       const center = {
         position: 'absolute',
         margin: 'auto',
@@ -108,12 +98,7 @@ export class FlexibleSpinnerComponent implements OnInit, OnChanges, OnDestroy {
 
       this.style = { ...this.style, ...center };
 
-      this.textStyle = {
-        ...this.textStyle,
-        width: '200px',
-        paddingTop: `${size + (thickness * 2) + 50}px`,
-        ...center
-      };
+      this.textStyle = { ...this.textStyle, ...center };
     }
   }
 

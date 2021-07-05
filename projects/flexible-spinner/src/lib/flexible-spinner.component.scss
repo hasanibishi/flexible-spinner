@@ -1,6 +1,12 @@
-.loader {
-    border-radius: 50%;
-    background-color: transparent;
+.content {
+    display: grid;
+    justify-items: center;
+    pointer-events: none;
+
+    .loader {
+        border-radius: 50%;
+        background-color: transparent;
+    }
 }
 
 /* Safari */

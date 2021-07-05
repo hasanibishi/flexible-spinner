@@ -23,7 +23,9 @@ export class AppComponent implements OnInit {
 
   constructor(private spinnerService: FlexibleSpinnerService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.showSpinner();
+  }
 
   showSpinner() {
     this.spinnerService.showSpinner(this.spinnerId);
@@ -31,5 +33,13 @@ export class AppComponent implements OnInit {
 
   hideSpinner() {
     this.spinnerService.hideSpinner(this.spinnerId);
+  }
+
+  onUnFilledColorChange() {
+    this.hideSpinner();
+
+    setTimeout(() => {
+      this.showSpinner();
+    }, 50);
   }
 }
