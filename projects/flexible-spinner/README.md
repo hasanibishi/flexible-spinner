@@ -1,24 +1,97 @@
-# FlexibleSpinner
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+# Flexible Spinner
 
-## Code scaffolding
+flexible-spinner is a library which can be generated dynamically using Input properties. It can be used in many different places e.g. inside buttons, paragraphs etc, or on center position for whole current application. Fully wrote with TypeScript.
 
-Run `ng generate component component-name --project flexible-spinner` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project flexible-spinner`.
-> Note: Don't forget to add `--project flexible-spinner` or else it will be added to the default project in your `angular.json` file. 
+## Demo
+👉 Live Demo: http://flexible-spinner.atwebpages.com/
 
-## Build
 
-Run `ng build flexible-spinner` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting started
+```
+npm install --save flexible-spinner
+```
 
-## Publishing
+## Setup
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { FlexibleSpinnerModule } from 'flexible-spinner';
 
-After building your library with `ng build flexible-spinner`, go to the dist folder `cd dist/flexible-spinner` and run `npm publish`.
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FlexibleSpinnerModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 
-## Running unit tests
+## Using the component
+### .html
+```
+<flexible-spinner [spinnerId]="1"
+                  [centerPosition]="false"
+                  [speed]="2"
+                  [size]="50"
+                  [thickness]="10"
+                  [filledWidth]="1"
+                  [filledColor]="'red'"
+                  [unFilledColor]="'#eee'"
+                  [showText]="true"
+                  [text]="'Loading...'"
+                  [textSize]="16"
+                  [textColor]="'red'"></flexible-spinner>
+```
 
-Run `ng test flexible-spinner` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### .ts
+```
+import { FlexibleSpinnerService } from 'flexible-spinner';
+...
 
-## Further help
+constructor(
+  private spinnerService: FlexibleSpinnerService
+) { }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ngOnInit() {
+  this.showSpinner();
+}
+
+showSpinner() {
+  this.spinnerService.showSpinner(1);
+}
+
+hideSpinner() {
+  this.spinnerService.hideSpinner(1);
+}
+```
+
+## Input properties
+
+| @Input        	    | Type     	    |  Description    |
+|---------------------|---------------|-----------------
+| **spinnerId**       | number        | In the same it can be used in multiple places adding **spinnerId** |
+| **centerPosition**  | boolean       | It can be used on center position or in other places adding **centerPosition** |
+| **speed**           | number        | Rotation speed in **seconds**
+| **size**            | number        | Size in **px**
+| **thickness**       | number        | Thickness in **px**
+| **filledWidth**     | number        | Value must be 1, 2 or 3. It means the spinner can be filled 25%, 50% or 75%
+| **filledColor**     | string        | Color that is filled
+| **unFilledColor**   | string        | Color that is not filled
+| **showText**        | boolean       | Is possible to show text or message below the spinner
+| **text**            | string        | The text e.g. **Loading...**
+| **textSize**        | number        | The size of text in **px**
+| **textColor**       | string        | The color of text
+
+## License
+MIT
+
+
+## Author
+Hasan Ibishi

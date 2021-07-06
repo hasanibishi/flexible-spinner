@@ -1,6 +1,12 @@
 {
   "name": "flexible-spinner",
-  "version": "1.0.3",
+  "version": "1.0.5",
+  "author": "Hasan Ibishi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hasanibishi/flexible-spinner"
+  },
   "peerDependencies": {
     "@angular/common": "^12.0.5",
     "@angular/core": "^12.0.5"
