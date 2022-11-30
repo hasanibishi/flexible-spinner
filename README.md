@@ -37,7 +37,7 @@ export class AppModule { }
 ### .html
 ```
 <flexible-spinner [spinnerId]="1"
-                  [centerPosition]="false"
+                  [centerPosition]="true"
                   [speed]="2"
                   [size]="50"
                   [thickness]="10"
